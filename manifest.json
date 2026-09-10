@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "个人工作台",
+  "version": "1.2.0",
+  "description": "透明毛玻璃风格的个人驾驶台，作为 Chrome 新标签页（首页）使用：今日待办（主导）、本周 PAD、季度 OKR、月度复盘，单一橙色强调色，数据本地持久化。",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "action": {
+    "default_title": "个人工作台",
+    "default_popup": "popup.html"
+  },
+  "permissions": []
+}
