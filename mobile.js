@@ -42,6 +42,11 @@
           if (!Array.isArray(state[k])) state[k] = [];
         } catch (e) { state[k] = []; }
       });
+      // 字段兜底：与 desktop 对齐，外部导入 / 旧数据都不会触发 undefined.indexOf
+      state.tasks = state.tasks.map(function (t) { return Object.assign({ id: 't-' + Date.now() + Math.random().toString(36).slice(2, 6), title: '', status: 'todo', tags: [], date: '', priority: 1, oid: '', createdAt: Date.now() }, t || {}); });
+      state.objectives = state.objectives.map(function (o) { return Object.assign({ id: 'o-' + Date.now() + Math.random().toString(36).slice(2, 6), title: '', quarter: '' }, o || {}); });
+      state.krs = state.krs.map(function (k) { return Object.assign({ id: 'k-' + Date.now() + Math.random().toString(36).slice(2, 6), oid: '', title: '', progress: 0 }, k || {}); });
+      state.highlights = state.highlights.map(function (h) { return Object.assign({ id: 'h-' + Date.now() + Math.random().toString(36).slice(2, 6), text: '', date: new Date().toISOString().slice(0, 10) }, h || {}); });
       if (!localStorage.getItem(KEYS.init)) { Store.seed(); }
     },
     save: function () {

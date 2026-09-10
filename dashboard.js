@@ -42,6 +42,11 @@
       try { var raw = localStorage.getItem(KEYS[k]); state[k] = raw ? JSON.parse(raw) : []; if (!Array.isArray(state[k])) state[k] = []; }
       catch (e) { state[k] = []; }
     });
+    // 字段兜底：旧数据 / 外部导入 / 损坏恢复都能用
+    state.tasks = state.tasks.map(function (t) { return Object.assign({ id: uid(), title: '', status: 'todo', tags: [], date: '', priority: 1, oid: '', createdAt: Date.now() }, t || {}); });
+    state.objectives = state.objectives.map(function (o) { return Object.assign({ id: uid(), title: '', quarter: '' }, o || {}); });
+    state.krs = state.krs.map(function (k) { return Object.assign({ id: uid(), oid: '', title: '', progress: 0 }, k || {}); });
+    state.highlights = state.highlights.map(function (h) { return Object.assign({ id: uid(), text: '', date: today() }, h || {}); });
     if (!localStorage.getItem(KEYS.init)) seed();
   }
   function save() { Object.keys(KEYS).forEach(function (k) { if (k !== 'init') localStorage.setItem(KEYS[k], JSON.stringify(state[k])); }); }

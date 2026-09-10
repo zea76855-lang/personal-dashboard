@@ -53,9 +53,9 @@ python3 -m http.server 8080
 |---|---|---|
 | `wb_pwd_init` | 首次初始化标记 | 0/1 |
 | `wb_pwd_task` | 今日待办（任务） | 数组 |
-| `wb_pwd_objective` | 季度 OKR / O | 数组 |
+| `wb_pwd_obj` | 季度 OKR / O | 数组 |
 | `wb_pwd_kr` | KR（关键结果） | 数组 |
-| `wb_pwd_highlight` | 周复盘亮点 | 数组 |
+| `wb_pwd_hi` | 周复盘亮点 | 数组 |
 
 桌面端键全部以 `wb_pwd_` 开头，移动端共用同一份键，桌面与移动自动数据互通。
 
